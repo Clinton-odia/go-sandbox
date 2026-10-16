@@ -1,3 +1,6 @@
 go 1.26.9
 
-use ./cli-demos/notebook-cli
+use (
+	./cli-demos/notebook-cli
+	./cli-demos/price-calculator-cli
+)
