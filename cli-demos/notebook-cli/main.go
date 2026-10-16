@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/Clinton-odia/go-sandbox/cli-demos/notebook-cli/note"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -14,7 +15,11 @@ func main() {
 		fmt.Println("Error:", err)
 		return
 	}
-
+	err = userNote.Save()
+	if err != nil {
+		fmt.Println("Error saving note:", err)
+		return
+	}
 	note.DisplayNote(userNote)
 }
 func getDataFromUser() (string, string) {
@@ -32,5 +37,5 @@ func getUserInput(prompt string) string {
 		fmt.Println("Error reading input:", err)
 		return ""
 	}
-	return text[:len(text)-1] // Remove the newline character
+	return strings.TrimSpace(text) // Remove the newline character and any leading/trailing whitespace
 }
